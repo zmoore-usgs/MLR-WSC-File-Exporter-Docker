@@ -1,0 +1,15 @@
+---
+  version: '3.5'
+
+  secrets:
+    water_auth_secret:
+      file: ./config/oauthClientSecret.txt
+
+  services:
+    mlr-wsc-file-exporter:
+      build: .
+      image: mlr-wsc-file-exporter-service
+      ports:
+        - "443:443"
+      env_file:
+        - docker-compose.env

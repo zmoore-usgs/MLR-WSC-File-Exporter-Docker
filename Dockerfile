@@ -1,6 +1,6 @@
 FROM alpine:3.6
-ARG artifact_version
-ARG build_type
+ARG artifact_version=0.6.0.dev0
+ARG build_type=snapshots
 ARG listening_port=7010
 ARG protocol=https
 RUN apk update && apk upgrade && mkdir /local
