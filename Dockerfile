@@ -4,9 +4,8 @@ ENV repo_name=usgs-python-centralized
 ENV artifact_id=usgs-wma-mlr-wsc-file-exporter
 ENV artifact_version=0.6.0.dev0
 
-ARG build_type=snapshots
-ARG listening_port=7010
-ARG protocol=https
+ENV listening_port=7010
+ENV protocol=https
 RUN apk update && apk upgrade && mkdir /local
 RUN apk add --update \
   python3 \
