@@ -1,4 +1,4 @@
-FROM alpine:3.8
+FROM alpine:3.6
 
 ENV repo_name=usgs-python-centralized
 ENV artifact_id=usgs-wma-mlr-wsc-file-exporter
