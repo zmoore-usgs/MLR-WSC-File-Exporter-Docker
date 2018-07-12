@@ -13,6 +13,12 @@ before_install:
   - chmod +x docker-compose
   - sudo mv docker-compose /usr/local/bin
   - sudo apt-get -y -o Dpkg::Options::="--force-confnew" install docker-ce
+  # Run NGINX server within Travis
+  - docker run -d -p 8443:443 -p 8080:80 -v ${PWD}/.travis/nginx.conf:/etc/nginx/nginx.conf -v ${PWD}/.travis/wildcard.crt:/etc/nginx/wildcard.crt -v ${PWD}/.travis/wildcard.key:/etc/nginx/wildcard.key nginx:latest && sleep 5
+  # Pull against localhost - will be proxied by NGINX to Artifactory
+  - docker pull localhost:8443/mlr-python-base-docker:latest
+  # Tag the pulled image to match the internal name of the Artifactory server
+  - docker tag localhost:8443/mlr-python-base-docker:latest cidasdpdasartip.cr.usgs.gov:8447/mlr-python-base-docker:latest
 
 install:
   - docker build -t mlr-wsc-file-exporter-service .
