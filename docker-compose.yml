@@ -6,8 +6,6 @@
       file: ./config/certificates/wildcard-dev.crt
     ssl_key:
       file: ./config/certificates/wildcard-dev.key
-    water_auth_secret:
-      file: ./config/oauthClientSecret.txt
       
   services:
     mlr-wsc-file-exporter:
