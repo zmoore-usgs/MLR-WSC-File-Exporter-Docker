@@ -1,4 +1,4 @@
-FROM alpine:3.6
+FROM cidasdpdasartip.cr.usgs.gov:8447/mlr-python-base-docker:latest
 
 ENV repo_name=usgs-python-centralized
 ENV artifact_id=usgs-wma-mlr-wsc-file-exporter
