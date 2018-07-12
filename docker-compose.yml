@@ -1,11 +1,24 @@
 ---
   version: '3.5'
 
+  secrets:
+    tomcat_ssl_crt:
+      file: ./config/certificates/wildcard-dev.crt
+    tomcat_ssl_key:
+      file: ./config/certificates/wildcard-dev.key
+    water_auth_secret:
+      file: ./config/oauthClientSecret.txt
+      
   services:
     mlr-wsc-file-exporter:
       build: .
       image: mlr-wsc-file-exporter-service
       ports:
         - "443:443"
+      secrets:
+        - source: ssl_crt
+          target: /wildcard-ssl.crt
+        - source: ssl_key
+          target: /wildcard-ssl.key
       env_file:
         - docker-compose.env
