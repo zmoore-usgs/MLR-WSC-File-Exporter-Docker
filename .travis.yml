@@ -37,7 +37,7 @@ install:
 
 script:
   - docker ps -a | grep -q "${DOCKER_IMAGE}"
-    - cd docker-bench-security
+  - cd docker-bench-security
   - sudo sh docker-bench-security.sh -c container_images
   - docker run -d --name db arminc/clair-db
   - docker run -p 6060:6060 --link db:postgres -d --name clair arminc/clair-local-scan:v2.0.3
