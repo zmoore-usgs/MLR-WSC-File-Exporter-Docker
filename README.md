@@ -2,7 +2,6 @@
 Docker configuration to deploy the MLR-WSC-File-Exporter service in a Docker container
 
 [![Build Status](https://travis-ci.org/USGS-CIDA/MLR-WSC-File-Exporter-Docker.svg?branch=master)](https://travis-ci.org/USGS-CIDA/MLR-WSC-File-Exporter-Docker)
-[![Coverage Status](https://coveralls.io/repos/github/USGS-CIDA/MLR-WSC-File-Exporter-Docker/badge.svg?branch=master)](https://coveralls.io/github/USGS-CIDA/MLR-WSC-File-Exporter-Docker?branch=master)
 
 The two docker files provided pull the artifact from cida.usgs.gov/artifactory. The build type and version should be 
 specfied as build-arg's when building the image. The argument build_type should be 'snapshots' or 'releases'. The 
