@@ -15,7 +15,10 @@ ENV TIERNAME=development
 ENV authorized_roles=test_default
 
 COPY import_certs.sh import_certs.sh
-RUN ["chmod", "+x", "import_certs.sh"]
+COPY entrypoint.sh entrypoint.sh
+
+RUN ["chmod", "+x", "import_certs.sh", "entrypoint.sh"] && \
+	["./import_certs.sh"]
 
 COPY gunicorn_config.py /local/gunicorn_config.py
 RUN pip3 install  gunicorn==19.7.1 &&\
@@ -24,7 +27,8 @@ RUN pip3 install  gunicorn==19.7.1 &&\
 
 VOLUME /export_results
 EXPOSE ${listening_port}
-CMD ["/usr/bin/gunicorn", "--reload",  "app", "--config", "file:/local/gunicorn_config.py"]
+
+ENTRYPOINT ["./entrypoint.sh"]
 
 ENV hc_uri ${protocol}://127.0.0.1:${listening_port}/version
 HEALTHCHECK CMD curl -k ${hc_uri} | grep -q '"artifact": "usgs-wma-mlr-wsc-file-exporter"' || exit 1
