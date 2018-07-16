@@ -14,5 +14,5 @@ if [ -n "${CERT_IMPORT_DIRECTORY}" ] && [ -d "${CERT_IMPORT_DIRECTORY}" ]; then
 	done	
 fi
 update-ca-certificates
-export PIP_CERT="/etc/ssl/certs/ca-certificates.crt"
+#export PIP_CERT="/etc/ssl/certs/ca-certificates.crt"
 
