@@ -7,6 +7,9 @@ ENV artifact_version=0.6.0.dev0
 ENV listening_port=7010
 ENV protocol=https
 
+COPY import_certs.sh import_certs.sh
+RUN ["chmod", "+x", "import_certs.sh"]
+
 COPY gunicorn_config.py /local/gunicorn_config.py
 RUN pip3 install  gunicorn==19.7.1 &&\
     pip3 install  --extra-index-url https://cida.usgs.gov/artifactory/api/pypi/${repo_name}/simple -v ${artifact_id}==${artifact_version}
