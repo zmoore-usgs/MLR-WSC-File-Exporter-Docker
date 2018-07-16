@@ -2,7 +2,6 @@
 Docker configuration to deploy the MLR-WSC-File-Exporter service in a Docker container
 
 [![Build Status](https://travis-ci.org/USGS-CIDA/MLR-WSC-File-Exporter-Docker.svg?branch=master)](https://travis-ci.org/USGS-CIDA/MLR-WSC-File-Exporter-Docker)
-[![Coverage Status](https://coveralls.io/repos/github/USGS-CIDA/MLR-WSC-File-Exporter-Docker/badge.svg?branch=master)](https://coveralls.io/github/USGS-CIDA/MLR-WSC-File-Exporter-Docker?branch=master)
 
 The two docker files provided pull the artifact from cida.usgs.gov/artifactory. The build type and version should be 
 specfied as build-arg's when building the image. The argument build_type should be 'snapshots' or 'releases'. The 
@@ -11,7 +10,7 @@ container. The optional build argument, 'listening_port' can be specified and de
 This port will be exposed by the container. To build within the DOI network, use Dockerfile-DOI and place the DOI 
 cert in '/rootcrt'. Below is an example of how to build.
 ```bash
-docker build --build-arg artifact_version=0.1.0.dev0 --build-arg build_type=snapshots -t mlr_file_exporter -f Dockerfile-DOI .
+docker build -t mlr_file_exporter -f Dockerfile-DOI .
 ```
 
 To run, you can specify a bind mount on the host system where you want the exported files written (the src part of the bind). 
