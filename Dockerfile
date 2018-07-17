@@ -14,12 +14,13 @@ ENV S3_BUCKET=default-location
 ENV AWS_REGION=default-region
 ENV TIERNAME=development
 ENV authorized_roles=test_default
-ENV CERT_IMPORT_DIRECTORY=/
+ENV CERT_IMPORT_DIRECTORY=/certificates
 
 COPY import_certs.sh import_certs.sh
 COPY entrypoint.sh entrypoint.sh
 
-RUN ["chmod", "+x", "import_certs.sh", "entrypoint.sh", "./import_certs.sh"]
+RUN ["chmod", "+x", "import_certs.sh", "entrypoint.sh"]
+RUN ["./import_certs.sh"]
 
 COPY gunicorn_config.py /local/gunicorn_config.py
 RUN pip3 install  gunicorn==19.7.1 &&\
