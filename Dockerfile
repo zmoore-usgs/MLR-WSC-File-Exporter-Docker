@@ -13,7 +13,7 @@ ENV S3_BUCKET=default-location
 ENV AWS_REGION=default-region
 ENV TIERNAME=development
 ENV authorized_roles=test_default
-ENV CERT_IMPORT_DIRECTORY=/tmp/
+ENV CERT_IMPORT_DIRECTORY=/
 
 COPY import_certs.sh import_certs.sh
 COPY entrypoint.sh entrypoint.sh
