@@ -1,4 +1,5 @@
 FROM cidasdpdasartip.cr.usgs.gov:8447/mlr-python-base-docker:latest
+LABEL maintainer="gs-w_eto_eb_federal_employees@usgs.gov"
 
 ENV repo_name=usgs-python-centralized
 ENV artifact_id=usgs-wma-mlr-wsc-file-exporter
@@ -18,8 +19,7 @@ ENV CERT_IMPORT_DIRECTORY=/
 COPY import_certs.sh import_certs.sh
 COPY entrypoint.sh entrypoint.sh
 
-RUN ["chmod", "+x", "import_certs.sh", "entrypoint.sh"] && \
-	["./import_certs.sh"]
+RUN ["chmod", "+x", "import_certs.sh", "entrypoint.sh", "./import_certs.sh"]
 
 COPY gunicorn_config.py /local/gunicorn_config.py
 RUN pip3 install  gunicorn==19.7.1 &&\
@@ -30,5 +30,4 @@ VOLUME /export_results
 
 ENTRYPOINT ["./entrypoint.sh"]
 
-ENV hc_uri ${protocol}://127.0.0.1:${listening_port}/version
-HEALTHCHECK CMD curl -k ${hc_uri} | grep -q '"artifact": "usgs-wma-mlr-wsc-file-exporter"' || exit 1
+HEALTHCHECK CMD curl -k ${protocol}://127.0.0.1:${listening_port}/version | grep -q '"artifact": "${artifact_id}"' || exit 1
