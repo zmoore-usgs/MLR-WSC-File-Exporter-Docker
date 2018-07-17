@@ -27,7 +27,6 @@ RUN pip3 install  gunicorn==19.7.1 &&\
 
 
 VOLUME /export_results
-EXPOSE ${listening_port}
 
 ENTRYPOINT ["./entrypoint.sh"]
 
