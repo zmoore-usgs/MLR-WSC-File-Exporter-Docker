@@ -27,6 +27,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ### Changed
 - isuftin@usgs.gov - cleaned up Dockerfile order of operations for importing certificates
 - isuftin@usgs.gov - pip installation is now less verbose
+- isuftin@usgs.gov - Travis test for running container
 
 ### Removed
 - isuftin@usgs.gov - import_certs.sh - Now run from base container

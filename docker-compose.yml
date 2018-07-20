@@ -12,16 +12,12 @@
       build: .
       image: mlr-wsc-file-exporter-service
       ports:
-        - "443:443"
+        - "7010:7010"
       env_file:
         - config.env
         - secrets.env
       secrets:
         - source: ssl_crt
           target: /home/python/certificates/wildcard-ssl.crt
-          uid: '1000'
-          gid: '1000'
         - source: ssl_key
           target: /home/python/certificates/wildcard-ssl.key
-          uid: '1000'
-          gid: '1000'
