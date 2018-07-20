@@ -1,6 +1,12 @@
 ---
   version: '3.5'
-      
+
+  secrets:
+    ssl_crt:
+      file: ./config/certificates/wildcard-dev.crt
+    ssl_key:
+      file: ./config/certificates/wildcard-dev.key
+
   services:
     mlr-wsc-file-exporter:
       build: .
@@ -8,4 +14,14 @@
       ports:
         - "443:443"
       env_file:
-        - docker-compose.env
+        - config.env
+        - secrets.env
+      secrets:
+        - source: ssl_crt
+          target: /home/python/certificates/wildcard-ssl.crt
+          uid: '1000'
+          gid: '1000'
+        - source: ssl_key
+          target: /home/python/certificates/wildcard-ssl.key
+          uid: '1000'
+          gid: '1000'
