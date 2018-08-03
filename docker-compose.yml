@@ -8,7 +8,7 @@
       file: ./config/certificates/wildcard-dev.key
 
   services:
-    mlr-wsc-file-exporter:
+    mlr-wsc-file-exporter-service:
       build: .
       image: mlr-wsc-file-exporter-service
       ports:
