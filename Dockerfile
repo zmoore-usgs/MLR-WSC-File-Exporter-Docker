@@ -13,7 +13,7 @@ ENV S3_BUCKET=default-location
 ENV AWS_REGION=default-region
 ENV TIERNAME=development
 
-RUN pip3 install --no-cache-dir --user --extra-index-url https://cida.usgs.gov/artifactory/api/pypi/${repo_name}/simple -v ${artifact_id}==${artifact_version}
+RUN pip3 install --no-cache-dir --quiet --user --extra-index-url https://cida.usgs.gov/artifactory/api/pypi/${repo_name}/simple -v ${artifact_id}==${artifact_version}
 
 VOLUME /export_results
 
