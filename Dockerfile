@@ -17,4 +17,4 @@ RUN pip3 install --no-cache-dir --quiet --user --extra-index-url https://cida.us
 
 VOLUME /export_results
 
-HEALTHCHECK CMD curl -k ${protocol}://127.0.0.1:${listening_port}/version | grep -q '"artifact": "${artifact_id}"' || exit 1
+HEALTHCHECK CMD curl -k ${protocol}://127.0.0.1:${listening_port}/version | grep -q "\"artifact\": \"${artifact_id}\"" || exit 1
